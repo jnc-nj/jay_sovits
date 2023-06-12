@@ -1,0 +1,21 @@
+services:
+  jay_train:
+    image: "sovits"
+    container_name: "jay_train"
+    restart: "unless-stopped"
+    volumes:
+      - /data/jay/dataset_raw:/workspace/so-vits-svc/dataset_raw
+      - /data/jay/dataset:/workspace/so-vits-svc/dataset
+      - /data/jay/logs:/workspace/so-vits-svc/logs
+      - /data/jay/pretrain:/workspace/so-vits-svc/pretrain
+      - /data/jay/configs:/workspace/so-vits-svc/configs
+      - /data/jay/filelists:/workspace/so-vits-svc/filelists
+      - /data/stable-diffusion-webui-docker/data/jay_input:/workspace/so-vits-svc/raw
+      - /data/stable-diffusion-webui-docker/data/jay_output:/workspace/so-vits-svc/results
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
