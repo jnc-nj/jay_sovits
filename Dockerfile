@@ -10,11 +10,11 @@ ENTRYPOINT ["/bin/bash"]
 # python train.py -c configs/config.json -m 44k
 # python train_diff.py -c configs/diffusion.yaml
 
-# python inference_main.py -m "logs/44k/G_200000.pth" -c "configs/config.json" -shd -dm "logs/44k/diffusion/model_150000.pt" -dc "configs/diffusion.yaml" -fr -cm "logs/44k/feature_and_index.pkl" -s "jay" -cr 0.5 -lea 0.5 -f0p "crepe" -cl 25 -t 0 -a -ns 0.4 -lg 1 -ks 1000 -sd -30 -ft 0.001 -wf "wav" -n "test_f.wav"
+# python inference_main.py -m "logs/44k/G_200000.pth" -c "configs/config.json" -shd -dm "logs/44k/diffusion/model_450000.pt" -dc "configs/diffusion.yaml" -fr -cm "logs/44k/feature_and_index.pkl" -s "jay" -cr 0.5 -lea 0.5 -f0p "crepe" -cl 25 -t 0 -a -ns 0.4 -lg 1 -ks 1000 -sd -30 -ft 0.001 -wf "wav" -n "test_f_1.wav"
 
 # tensorboard --logdir logs --bind_all --port 7860
 # tensorboard --logdir logs/44k/diffusion/logs --bind_all --port 7861
 
-# for f in raw/*.wav; do python inference_main.py -m "logs/44k/G_200000.pth" -c "configs/config.json" -shd -dm "logs/44k/diffusion/model_150000.pt" -dc "configs/diffusion.yaml" -fr -cm "logs/44k/feature_and_index.pkl" -s "jay" -cr 0.5 -lea 0.5 -f0p "crepe" -cl 25 -t 0 -a -ns 0.4 -lg 1 -ks 1000 -sd -30 -ft 0.0001 -wf "wav" -n "$(basename $f)"
+# for f in raw/*.wav; do python inference_main.py -m "logs/44k/G_200000.pth" -c "configs/config.json" -shd -dm "logs/44k/diffusion/model_450000.pt" -dc "configs/diffusion.yaml" -fr -cm "logs/44k/feature_and_index.pkl" -s "jay" -cr 0.5 -lea 0.5 -f0p "crepe" -cl 25 -t 0 -a -ns 0.4 -lg 1 -ks 1000 -sd -30 -ft 0.001 -wf "wav" -n "$(basename $f)"
 
 # for f in *.flac; do ffmpeg -y -i "$(basename $f)" -af 'asetrate=44100*95/100,atempo=100/95' "$(basename $f).wav"
